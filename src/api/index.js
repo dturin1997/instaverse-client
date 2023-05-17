@@ -1,8 +1,9 @@
 import axios from "axios";
 
 //const url = "http://localhost:5001/stories"
+//Se debe iniciar por REACT_APP_ las variables de entorno
 const api = axios.create({
-  baseURL: "https://instaverse-server-production.up.railway.app",
+  baseURL: process.env.REACT_APP_BASE_URL,
 });
 
 api.interceptors.request.use((req) => {

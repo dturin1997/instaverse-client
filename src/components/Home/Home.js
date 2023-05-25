@@ -30,7 +30,7 @@ const Home = () => {
           >
             <Row>
               <Col span={24}>
-                <Sider style={styles.sider} width={400}>
+                <Sider style={styles.sider} width={xs ? "100%" : 400}>
                   <StoryForm
                     selectedId={selectedId}
                     setSelectedId={setSelectedId}

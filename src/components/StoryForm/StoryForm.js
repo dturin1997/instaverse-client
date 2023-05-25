@@ -5,6 +5,8 @@ import styles from "./styles";
 import { useDispatch, useSelector } from "react-redux";
 import { createStory, updateStory } from "../../actions/stories";
 import { Link } from "react-router-dom";
+import ScrollToTop from "../../utils/ScrollToTop";
+
 const { useBreakpoint } = Grid;
 
 const { Title } = Typography;
@@ -30,6 +32,7 @@ function StoryForm({ selectedId, setSelectedId }) {
 
   useEffect(() => {
     if (story) {
+      if (xs) ScrollToTop();
       form.setFieldsValue(story);
     }
   }, [story, form]);
@@ -41,7 +44,17 @@ function StoryForm({ selectedId, setSelectedId }) {
 
   if (!user) {
     return (
-      <Card style={styles.formCard}>
+      <Card
+        style={
+          xs
+            ? {
+                width: 390,
+                position: "relative",
+                margin: "30px 10px",
+              }
+            : styles.formCard
+        }
+      >
         <Title level={4}>
           <span style={styles.formTitle}>Welcome to Instaverse!</span> <br />
           Please <Link to="/authform">login</Link> or{" "}
@@ -57,9 +70,9 @@ function StoryForm({ selectedId, setSelectedId }) {
       style={
         xs
           ? {
-              width: 390,
+              width: "90%",
               position: "relative",
-              margin: "30px 10px",
+              margin: "30px 5%",
             }
           : styles.formCard
       }

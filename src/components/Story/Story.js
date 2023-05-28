@@ -77,7 +77,7 @@ function Story({ story, setSelectedId }) {
         {story.caption}
       </Paragraph>
       {expand ? (
-        <Link href="#">{story.tags.split(" ").map((tag) => `#${tag} `)}</Link>
+        <Link href="#">{story.tags?.split(" ").map((tag) => `#${tag} `)}</Link>
       ) : null}
       <br />
       <Text type="secondary">{moment(story.postDate).fromNow()}</Text>

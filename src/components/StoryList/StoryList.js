@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 
 function StoryList({ setSelectedId }) {
   const stories = useSelector((state) => state.stories);
-  console.log("stories", stories);
+  //console.log("stories", stories);
   return !stories.length ? (
     <div style={{ textAlign: "center" }}>
       <Spin size="large" />

@@ -1,10 +1,13 @@
 const styles = {
-    sider:{
-        background: '#f0f2f5'
-    },
-    content:{
-        margin:'2rem'
-    }
-}
+  layout: {
+    flexDirection: "column",
+  },
+  sider: {
+    background: "#f0f2f5",
+  },
+  content: {
+    margin: "2rem",
+  },
+};
 
-export default styles
+export default styles;

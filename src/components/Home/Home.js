@@ -29,10 +29,12 @@ const Home = () => {
         </Layout>
       </MediaQuery>
       <MediaQuery maxWidth={414}>
-        <Layout style={styles.layout}>
+        <Layout>
           <Sider style={styles.sider} width={390}>
             <StoryForm selectedId={selectedId} setSelectedId={setSelectedId} />
           </Sider>
+        </Layout>
+        <Layout style={{ ...styles.layout }}>
           <Content style={styles.content}>
             <StoryList setSelectedId={setSelectedId} />
           </Content>

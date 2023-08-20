@@ -1,18 +1,15 @@
 import React, { useEffect } from "react";
-import { Card, Form, Input, Typography, Button, Grid } from "antd";
+import { Card, Form, Input, Typography, Button } from "antd";
 import FileBase64 from "react-file-base64";
 import styles from "./styles";
 import { useDispatch, useSelector } from "react-redux";
 import { createStory, updateStory } from "../../actions/stories";
 import { Link } from "react-router-dom";
-import ScrollToTop from "../../utils/ScrollToTop";
-
-const { useBreakpoint } = Grid;
+import MediaQuery from "react-responsive";
 
 const { Title } = Typography;
 
 function StoryForm({ selectedId, setSelectedId }) {
-  const { xs } = useBreakpoint();
   const story = useSelector((state) =>
     selectedId ? state.stories.find((story) => story._id === selectedId) : null
   );
@@ -32,7 +29,6 @@ function StoryForm({ selectedId, setSelectedId }) {
 
   useEffect(() => {
     if (story) {
-      if (xs) ScrollToTop();
       form.setFieldsValue(story);
     }
   }, [story, form]);
@@ -44,38 +40,36 @@ function StoryForm({ selectedId, setSelectedId }) {
 
   if (!user) {
     return (
-      <Card
-        style={
-          xs
-            ? {
-                width: 390,
-                position: "relative",
-                margin: "30px 10px",
-              }
-            : styles.formCard
-        }
-      >
-        <Title level={4}>
-          <span style={styles.formTitle}>Welcome to Instaverse!</span> <br />
-          Please <Link to="/authform">login</Link> or{" "}
-          <Link to="/authform">register</Link> for sharing instant moments or
-          ideas.
-        </Title>
-      </Card>
+      <>
+        <MediaQuery minWidth={768}>
+          <Card style={styles.formCard}>
+            <Title level={4}>
+              <span style={styles.formTitle}>Welcome to Instaverse!</span>{" "}
+              <br />
+              Please <Link to="/authform">login</Link> or{" "}
+              <Link to="/authform">register</Link> for sharing instant moments
+              or ideas.
+            </Title>
+          </Card>
+        </MediaQuery>
+        <MediaQuery maxWidth={414}>
+          <Card style={{ ...styles.formCard, ...{ width: 394 } }}>
+            <Title level={4}>
+              <span style={styles.formTitle}>Welcome to Instaverse!</span>{" "}
+              <br />
+              Please <Link to="/authform">login</Link> or{" "}
+              <Link to="/authform">register</Link> for sharing instant moments
+              or ideas.
+            </Title>
+          </Card>
+        </MediaQuery>
+      </>
     );
   }
 
   return (
     <Card
-      style={
-        xs
-          ? {
-              width: "90%",
-              position: "relative",
-              margin: "30px 5%",
-            }
-          : styles.formCard
-      }
+      style={styles.formCard}
       title={
         <Title level={4} style={styles.formTitle}>
           {selectedId ? "Editing" : "Share"} a story
@@ -110,13 +104,23 @@ function StoryForm({ selectedId, setSelectedId }) {
             }}
           />
         </Form.Item>
-        <Form.Item style={{ display: "flex", justifyContent: "center" }}>
+        <Form.Item
+          wrapperCol={{
+            span: 16,
+            offset: 6,
+          }}
+        >
           <Button type="primary" block htmlType="submit">
             Shared
           </Button>
         </Form.Item>
         {!selectedId ? null : (
-          <Form.Item style={{ display: "flex", justifyContent: "center" }}>
+          <Form.Item
+            wrapperCol={{
+              span: 16,
+              offset: 6,
+            }}
+          >
             <Button
               type="primary"
               block

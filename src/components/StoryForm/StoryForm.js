@@ -68,72 +68,163 @@ function StoryForm({ selectedId, setSelectedId }) {
   }
 
   return (
-    <Card
-      style={styles.formCard}
-      title={
-        <Title level={4} style={styles.formTitle}>
-          {selectedId ? "Editing" : "Share"} a story
-        </Title>
-      }
-    >
-      <Form
-        form={form}
-        labelCol={{ span: 6 }}
-        wrapperCol={{ span: 16 }}
-        layout="horizontal"
-        size="middle"
-        onFinish={onSubmit}
-      >
-        {/* <Form.Item name="username" label="Username" rules={[{ required: true }]}>
+    <>
+      <MediaQuery minWidth={768}>
+        <Card
+          style={styles.formCard}
+          title={
+            <Title level={4} style={styles.formTitle}>
+              {selectedId ? "Editing" : "Share"} a story
+            </Title>
+          }
+        >
+          <Form
+            form={form}
+            labelCol={{ span: 6 }}
+            wrapperCol={{ span: 16 }}
+            layout="horizontal"
+            size="middle"
+            onFinish={onSubmit}
+          >
+            {/* <Form.Item name="username" label="Username" rules={[{ required: true }]}>
           <Input allowClear/>
         </Form.Item>  */}
-        <Form.Item name="caption" label="Caption" rules={[{ required: true }]}>
-          <Input.TextArea allowClear autoSize={{ minRows: 2, maxRows: 6 }} />
-        </Form.Item>
-        <Form.Item name="tags" label="Tags">
-          <Input.TextArea allowClear autoSize={{ minRows: 2, maxRows: 6 }} />
-        </Form.Item>
-        <Form.Item name="image" label="Image" rules={[{ required: true }]}>
-          <FileBase64
-            type="file"
-            multiple={false}
-            onDone={(e) => {
-              form.setFieldsValue({
-                image: e.base64,
-              });
-            }}
-          />
-        </Form.Item>
-        <Form.Item
-          wrapperCol={{
-            span: 16,
-            offset: 6,
-          }}
-        >
-          <Button type="primary" block htmlType="submit">
-            Shared
-          </Button>
-        </Form.Item>
-        {!selectedId ? null : (
-          <Form.Item
-            wrapperCol={{
-              span: 16,
-              offset: 6,
-            }}
-          >
-            <Button
-              type="primary"
-              block
-              htmlType="button"
-              danger
-              onClick={reset}
+            <Form.Item
+              name="caption"
+              label="Caption"
+              rules={[{ required: true }]}
             >
-              Discard
-            </Button>
-          </Form.Item>
-        )}
-      </Form>
-    </Card>
+              <Input.TextArea
+                allowClear
+                autoSize={{ minRows: 2, maxRows: 6 }}
+              />
+            </Form.Item>
+            <Form.Item name="tags" label="Tags">
+              <Input.TextArea
+                allowClear
+                autoSize={{ minRows: 2, maxRows: 6 }}
+              />
+            </Form.Item>
+            <Form.Item name="image" label="Image" rules={[{ required: true }]}>
+              <FileBase64
+                type="file"
+                multiple={false}
+                onDone={(e) => {
+                  form.setFieldsValue({
+                    image: e.base64,
+                  });
+                }}
+              />
+            </Form.Item>
+            <Form.Item
+              wrapperCol={{
+                span: 16,
+                offset: 6,
+              }}
+            >
+              <Button type="primary" block htmlType="submit">
+                Shared
+              </Button>
+            </Form.Item>
+            {!selectedId ? null : (
+              <Form.Item
+                wrapperCol={{
+                  span: 16,
+                  offset: 6,
+                }}
+              >
+                <Button
+                  type="primary"
+                  block
+                  htmlType="button"
+                  danger
+                  onClick={reset}
+                >
+                  Discard
+                </Button>
+              </Form.Item>
+            )}
+          </Form>
+        </Card>
+      </MediaQuery>
+      <MediaQuery maxWidth={414}>
+        <Card
+          style={{ ...styles.formCard, position: "relative", width: 370 }}
+          title={
+            <Title level={4} style={styles.formTitle}>
+              {selectedId ? "Editing" : "Share"} a story
+            </Title>
+          }
+        >
+          <Form
+            form={form}
+            labelCol={{ span: 6 }}
+            wrapperCol={{ span: 20 }}
+            layout="horizontal"
+            size="middle"
+            onFinish={onSubmit}
+          >
+            {/* <Form.Item name="username" label="Username" rules={[{ required: true }]}>
+          <Input allowClear/>
+        </Form.Item>  */}
+            <Form.Item
+              name="caption"
+              label="Caption"
+              rules={[{ required: true }]}
+            >
+              <Input.TextArea
+                allowClear
+                autoSize={{ minRows: 2, maxRows: 6 }}
+              />
+            </Form.Item>
+            <Form.Item name="tags" label="Tags">
+              <Input.TextArea
+                allowClear
+                autoSize={{ minRows: 2, maxRows: 6 }}
+              />
+            </Form.Item>
+            <Form.Item name="image" label="Image" rules={[{ required: true }]}>
+              <FileBase64
+                type="file"
+                multiple={false}
+                onDone={(e) => {
+                  form.setFieldsValue({
+                    image: e.base64,
+                  });
+                }}
+              />
+            </Form.Item>
+            <Form.Item
+              wrapperCol={{
+                span: 16,
+              }}
+            >
+              <Button type="primary" block htmlType="submit">
+                Shared
+              </Button>
+            </Form.Item>
+            {!selectedId ? null : (
+              <Form.Item
+                wrapperCol={{
+                  span: 16,
+                  offset: 6,
+                }}
+              >
+                <Button
+                  type="primary"
+                  block
+                  htmlType="button"
+                  danger
+                  onClick={reset}
+                >
+                  Discard
+                </Button>
+              </Form.Item>
+            )}
+          </Form>
+        </Card>
+      </MediaQuery>
+    </>
   );
 }
 

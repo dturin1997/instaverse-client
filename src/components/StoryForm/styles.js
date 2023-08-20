@@ -8,7 +8,9 @@ const styles = {
     width: 390,
     position: "fixed",
     // position: "relative",
-    margin: "30px 10px",
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginTop: "30px",
   },
 };
 export default styles;

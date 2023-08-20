@@ -56,7 +56,10 @@ function StoryForm({ selectedId, setSelectedId }) {
           <Card
             style={{
               ...styles.formCard,
-              ...{ position: "relative", width: 370 },
+              ...{
+                position: "relative",
+                width: 370,
+              },
             }}
           >
             <Title level={4}>
@@ -215,7 +218,6 @@ function StoryForm({ selectedId, setSelectedId }) {
               <Form.Item
                 wrapperCol={{
                   span: 16,
-                  offset: 6,
                 }}
               >
                 <Button

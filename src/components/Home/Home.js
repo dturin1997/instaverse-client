@@ -30,7 +30,7 @@ const Home = () => {
       </MediaQuery>
       <MediaQuery maxWidth={414}>
         <Layout>
-          <Content>
+          <Content style={{ display: "flex", justifyContent: "center" }}>
             <Sider style={styles.sider} width={390}>
               <StoryForm
                 selectedId={selectedId}

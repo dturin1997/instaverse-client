@@ -53,7 +53,12 @@ function StoryForm({ selectedId, setSelectedId }) {
           </Card>
         </MediaQuery>
         <MediaQuery maxWidth={414}>
-          <Card style={{ ...styles.formCard, ...{ width: 394 } }}>
+          <Card
+            style={{
+              ...styles.formCard,
+              ...{ position: "relative", width: 370 },
+            }}
+          >
             <Title level={4}>
               <span style={styles.formTitle}>Welcome to Instaverse!</span>{" "}
               <br />
@@ -149,7 +154,10 @@ function StoryForm({ selectedId, setSelectedId }) {
       </MediaQuery>
       <MediaQuery maxWidth={414}>
         <Card
-          style={{ ...styles.formCard, position: "relative", width: 370 }}
+          style={{
+            ...styles.formCard,
+            ...{ position: "relative", width: 370 },
+          }}
           title={
             <Title level={4} style={styles.formTitle}>
               {selectedId ? "Editing" : "Share"} a story

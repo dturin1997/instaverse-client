@@ -30,9 +30,14 @@ const Home = () => {
       </MediaQuery>
       <MediaQuery maxWidth={414}>
         <Layout>
-          <Sider style={styles.sider} width={390}>
-            <StoryForm selectedId={selectedId} setSelectedId={setSelectedId} />
-          </Sider>
+          <Content>
+            <Sider style={styles.sider} width={390}>
+              <StoryForm
+                selectedId={selectedId}
+                setSelectedId={setSelectedId}
+              />
+            </Sider>
+          </Content>
         </Layout>
         <Layout style={{ ...styles.layout }}>
           <Content style={styles.content}>

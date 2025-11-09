@@ -11,7 +11,6 @@ import MediaQuery from "react-responsive";
 
 const { Title } = Typography;
 const { Header } = Layout;
-const { useBreakpoint } = Grid;
 
 export default function AppBar() {
   //const user = null;

@@ -2,7 +2,6 @@ import React from "react";
 import { Row, Col, Spin } from "antd";
 import Story from "../Story";
 import { useSelector } from "react-redux";
-import MediaQuery from "react-responsive";
 
 function StoryList({ setSelectedId }) {
   const stories = useSelector((state) => state.stories);

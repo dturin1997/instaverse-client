@@ -10,7 +10,6 @@ import styles from "./styles";
 
 const { Title } = Typography;
 function AuthForm() {
-  const user = null;
   const navigate = useNavigate();
   const dispatch = useDispatch();
 

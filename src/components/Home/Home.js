@@ -28,7 +28,7 @@ const Home = () => {
           </Content>
         </Layout>
       </MediaQuery>
-      <MediaQuery maxWidth={414}>
+      <MediaQuery maxWidth={430}>
         <Layout>
           <Content style={{ display: "flex", justifyContent: "center" }}>
             <Sider style={styles.sider} width={390}>

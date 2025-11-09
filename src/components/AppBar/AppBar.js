@@ -75,7 +75,7 @@ export default function AppBar() {
           )}
         </Header>
       </MediaQuery>
-      <MediaQuery maxWidth={414}>
+      <MediaQuery maxWidth={430}>
         <Header
           style={{
             ...styles.header,

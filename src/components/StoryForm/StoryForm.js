@@ -52,7 +52,7 @@ function StoryForm({ selectedId, setSelectedId }) {
             </Title>
           </Card>
         </MediaQuery>
-        <MediaQuery maxWidth={414}>
+        <MediaQuery maxWidth={430}>
           <Card
             style={{
               ...styles.formCard,
@@ -155,7 +155,7 @@ function StoryForm({ selectedId, setSelectedId }) {
           </Form>
         </Card>
       </MediaQuery>
-      <MediaQuery maxWidth={414}>
+      <MediaQuery maxWidth={430}>
         <Card
           style={{
             ...styles.formCard,

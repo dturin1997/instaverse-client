@@ -124,7 +124,7 @@ function AuthForm() {
           </Card>
         </Layout>
       </MediaQuery>
-      <MediaQuery maxWidth={414}>
+      <MediaQuery maxWidth={430}>
         <Layout
           style={{
             ...styles.container,

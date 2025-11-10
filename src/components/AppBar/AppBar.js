@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { Layout, Image, Typography, Button, Avatar, Grid } from "antd";
+import { Layout, Image, Typography, Button, Avatar} from "antd";
 import Logo from "../../images/icono-instagram.png";
 import { useDispatch } from "react-redux";
 import { LOGOUT } from "../../constants/actionTypes";
@@ -29,7 +29,7 @@ export default function AppBar() {
     }
 
     setUser(JSON.parse(localStorage.getItem("profile")));
-  }, [location]);
+  }, [location, logout, user?.token]);
 
   const logout = () => {
     dispatch({ type: LOGOUT });

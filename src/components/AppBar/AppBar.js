@@ -21,21 +21,26 @@ export default function AppBar() {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
 
   useEffect(() => {
-    const token = user?.token;
+    // Load user from localStorage
+    const storedProfile = JSON.parse(localStorage.getItem("profile"));
+    setUser(storedProfile);
 
+    // Check if token expired
+    const token = storedProfile?.token;
     if (token) {
       const decodedToken = decode(token);
-      if (decodedToken.exp * 1000 < new Date().getTime()) logout();
+      if (decodedToken.exp * 1000 < new Date().getTime()) {
+        logout();
+      }
     }
+  }, [location, logout, setUser]); // dependencies are stable
 
-    setUser(JSON.parse(localStorage.getItem("profile")));
-  }, [location, logout, user?.token]);
 
   const logout = useCallback(() => {
     dispatch({ type: LOGOUT });
     navigate("/authform"); // redirect to login page
     setUser(null);
-  });
+  }, [dispatch, navigate, setUser]);
 
   return (
     <>

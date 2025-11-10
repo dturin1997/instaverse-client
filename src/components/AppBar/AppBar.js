@@ -29,7 +29,7 @@ export default function AppBar() {
     }
 
     setUser(JSON.parse(localStorage.getItem("profile")));
-  }, [location, logout(), user?.token]);
+  }, [location, logout, user?.token]);
 
   const logout = useCallback(() => {
     dispatch({ type: LOGOUT });

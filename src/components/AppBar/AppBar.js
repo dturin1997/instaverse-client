@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Layout, Image, Typography, Button, Avatar} from "antd";
 import Logo from "../../images/icono-instagram.png";
@@ -31,11 +31,11 @@ export default function AppBar() {
     setUser(JSON.parse(localStorage.getItem("profile")));
   }, [location, logout(), user?.token]);
 
-  const logout = () => {
+  const logout = useCallback(() => {
     dispatch({ type: LOGOUT });
     navigate("/authform"); // redirect to login page
     setUser(null);
-  };
+  });
 
   return (
     <>

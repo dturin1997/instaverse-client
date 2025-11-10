@@ -20,6 +20,12 @@ export default function AppBar() {
 
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
 
+    const logout = useCallback(() => {
+    dispatch({ type: LOGOUT });
+    navigate("/authform"); // redirect to login page
+    setUser(null);
+  }, [dispatch, navigate, setUser]);
+
   useEffect(() => {
     // Load user from localStorage
     const storedProfile = JSON.parse(localStorage.getItem("profile"));
@@ -34,13 +40,6 @@ export default function AppBar() {
       }
     }
   }, [location, logout, setUser]); // dependencies are stable
-
-
-  const logout = useCallback(() => {
-    dispatch({ type: LOGOUT });
-    navigate("/authform"); // redirect to login page
-    setUser(null);
-  }, [dispatch, navigate, setUser]);
 
   return (
     <>
